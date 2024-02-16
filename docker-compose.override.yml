@@ -149,6 +149,7 @@ services:
       - ${LOCAL_DEPLOY_PATH}\platform:C:\deploy
       - ${LOCAL_DATA_PATH}\cm:C:\inetpub\wwwroot\App_Data\logs
       - ${HOST_LICENSE_FOLDER}:c:\license
+      - ${HOST_ROOTCERTS_FOLDER}:c:\root-certs
     environment:
       SITECORE_SPE_ELEVATION: "Allow"
       SITECORE_LICENSE_LOCATION: c:\license\license.xml
@@ -179,4 +180,4 @@ services:
       Sitecore_ConnectionStrings_DAM_dot_SearchPage: ${SITECORE_DAM_SearchPage}
       Sitecore_ConnectionStrings_DAM_dot_ExternalRedirectKey: ${SITECORE_DAM_ExternalRedirectKey}
       # END CUSTOMIZATION
-    entrypoint: powershell -Command "& C:/tools/entrypoints/iis/Development.ps1"
+    entrypoint: powershell -Command "& C:/tools/entrypoints/iis/RootCertsAndDevelopment.ps1"

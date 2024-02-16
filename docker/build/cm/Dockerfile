@@ -18,6 +18,9 @@ WORKDIR C:\inetpub\wwwroot
 # Copy developer tools and entrypoint
 COPY --from=tools C:\tools C:\tools
 
+# Copy alternative entrypoints
+COPY ./entrypoints/ c:\tools\entrypoints
+
 # DEMO TEAM CUSTOMIZATION
 # Copy additional files to container
 COPY ./Data/ /inetpub/wwwroot/
