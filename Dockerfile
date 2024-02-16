@@ -22,6 +22,9 @@ ARG BUILD_CONFIGURATION
 
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
+COPY root-certs.pem /temp/
+RUN Import-Certificate -FilePath "temp\root-certs.pem" -CertStoreLocation Cert:\LocalMachine\Root
+
 # Ensure updated nuget. Depending on your Windows version, dotnet/framework/sdk:4.8 tag may provide an outdated client.
 # See https://github.com/microsoft/dotnet-framework-docker/blob/1c3dd6638c6b827b81ffb13386b924f6dcdee533/4.8/sdk/windowsservercore-ltsc2019/Dockerfile#L7
 ENV NUGET_VERSION 5.8.1
